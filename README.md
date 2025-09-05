@@ -1,9 +1,3 @@
-Perfect — here’s a **ready-to-drop `README.md`** for the `cre-effective-rate` repo:
-
----
-
-# `README.md`
-
 # CRE Effective Rate Calculator
 
 A lightweight **Streamlit app** for analyzing **Net Effective Rent (NER)** in commercial real estate lease deals.
@@ -126,9 +120,3 @@ The app will open in your browser at [http://localhost:8501](http://localhost:85
 ## 📄 License
 
 MIT License © 2025 Lee & Associates – Newport Beach
-
----
-
-👉 This README + your `prd.md` make the repo instantly usable and professional.
-
-Do you want me to also give you a **`requirements.txt` file** so you can commit all the boilerplate at once?
