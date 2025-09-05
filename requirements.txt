@@ -2,4 +2,4 @@ streamlit>=1.36
 pandas>=2.2
 xlsxwriter>=3.2
 openpyxl>=3.1
-streamlit-shadcn-ui>=0.3
+streamlit-shadcn-ui>=0.1.18

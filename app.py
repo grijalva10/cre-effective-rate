@@ -197,29 +197,6 @@ def main():
                 st.session_state.pop(k, None)
             st.rerun()
     
-    # Main content area - show professional empty state when no results yet
-    if 'schedule_df' not in st.session_state:
-        # Create centered empty state
-        st.markdown("")
-        st.markdown("")
-        
-        # Minimalist empty state
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        
-        col1, col2, col3 = st.columns([2, 3, 2])
-        with col2:
-            st.markdown("""
-                <div style="text-align: center; color: #6b7280; padding: 3rem 0;">
-                    <h3 style="color: #374151; margin-bottom: 1rem;">Enter lease parameters</h3>
-                    <p style="margin-bottom: 2rem;">Fill the sidebar and click Calculate.</p>
-                </div>
-            """, unsafe_allow_html=True)
-        
-        st.markdown("")
-        st.markdown("")
-    
     if submitted:
         # Calculate effective rent
         schedule_df, metrics = calculate_effective_rent(
@@ -231,6 +208,7 @@ def main():
         st.session_state.schedule_df = schedule_df
         st.session_state.metrics = metrics
     
+    # Show empty state or results
     if "schedule_df" in st.session_state and "metrics" in st.session_state:
         schedule_df = st.session_state.schedule_df
         metrics = st.session_state.metrics
@@ -416,6 +394,20 @@ def main():
                 st.metric("Free Rent Months", (schedule_df['After Free Rent ($/SF/mo)'] == 0).sum())
                 st.metric("Average Monthly Rent", f"${schedule_df['Scheduled Rent ($/SF/mo)'].mean():.2f}/SF")
         
+    else:
+        # Show empty state when no results
+        st.markdown("")
+        st.markdown("")
+        st.markdown("")
+        
+        col1, col2, col3 = st.columns([2, 3, 2])
+        with col2:
+            st.markdown("""
+                <div style="text-align: center; color: #6b7280; padding: 3rem 0;">
+                    <h3 style="color: #374151; margin-bottom: 1rem;">Enter lease parameters</h3>
+                    <p style="margin-bottom: 2rem;">Fill the sidebar and click Calculate.</p>
+                </div>
+            """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
