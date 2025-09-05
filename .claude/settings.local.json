@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(dir)",
+      "Bash(dir:*)",
+      "Bash(.venvScriptsactivate)",
+      "Bash(.venv/Scripts/activate)",
+      "Bash(.venv/Scripts/python.exe:*)",
+      "Bash(.venv/Scripts/pip.exe install:*)",
+      "Bash(.venv/Scripts/pip.exe list:*)",
+      "Bash(.venv/Scripts/streamlit.exe run app.py --server.headless true --server.port 8501)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

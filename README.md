@@ -108,12 +108,26 @@ The app will open in your browser at [http://localhost:8501](http://localhost:85
 
 ---
 
+## 🧪 Example Usage
+
+**Test A (Tenant, front-loaded):**
+- RSF=10,000; Start=2.50; Term=60; Esc=3%; Free=3; TI=$30/SF; TI=Straight-line; Perspective=Tenant
+- Expected: Effective < Avg Contract (since TI credit & free months lower it)
+
+**Test B (Tenant, spread):**
+- Same as A, with "Spread Free Rent" = true
+- Expected: First months no longer zero; smooth line chart; NER similar to A
+
+**Test C (Landlord):**
+- Same inputs as A, Perspective=Landlord
+- Expected: Effective > Avg Contract (TI increases cost)
+
 ## 📌 Roadmap
 
-* [ ] Add PDF export with chart + summary
-* [ ] Deploy as `/tools/effective-rate` inside Makerkit CRM
-* [ ] Add NPV/DCF option
-* [ ] Add branding (Lee & Associates logo on reports)
+* [ ] PDF export with charts and summary
+* [ ] NPV/DCF analysis option  
+* [ ] Next.js port for better performance
+* [ ] Multi-tenant lease analysis
 
 ---
 
