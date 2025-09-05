@@ -7,7 +7,8 @@ from datetime import datetime
 st.set_page_config(
     page_title="Effective Rent / Net Effective Rate",
     page_icon="🏢",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="expanded"
 )
 
 # Remove form border and padding, style calc button green
@@ -207,6 +208,7 @@ def main():
         
         st.session_state.schedule_df = schedule_df
         st.session_state.metrics = metrics
+        
     
     # Show empty state or results
     if "schedule_df" in st.session_state and "metrics" in st.session_state:
@@ -408,6 +410,7 @@ def main():
                     <p style="margin-bottom: 2rem;">Fill the sidebar and click Calculate.</p>
                 </div>
             """, unsafe_allow_html=True)
+    
 
 if __name__ == "__main__":
     main()
