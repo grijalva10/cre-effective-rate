@@ -149,11 +149,11 @@ def calculate_effective_rent(rsf, start_rent, term_months, annual_escalation,
     return schedule_df, metrics
 
 def main():
-    # Page header with title and download interface
-    header_col1, header_col2 = st.columns([2, 1])
+    # Page header with download interface
+    header_col1, header_col2 = st.columns([3, 1])
     
     with header_col1:
-        st.title("Effective Rent / Net Effective Rate (NER)")
+        st.empty()  # Placeholder for balanced layout
     
     with header_col2:
         # Download interface will be populated when results are available
@@ -308,7 +308,7 @@ def main():
         st.markdown("")
         
         # Total values in a 3-column layout
-        st.subheader(f"Total Values ({rsf:,} RSF)")
+        st.subheader(f"Total Values ({int(rsf):,} RSF)")
         col1, col2, col3 = st.columns(3)
         
         with col1:
@@ -357,29 +357,6 @@ def main():
             
             st.markdown("#### NER over Term ($/SF/mo)")
             st.line_chart(chart_data.set_index('Month'), height=400)
-            
-            # Chart insights
-            st.markdown("### Key Insights")
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                ui.metric_card(
-                    title="Highest Monthly Rent", 
-                    content=f"${schedule_df['Scheduled Rent ($/SF/mo)'].max():,.2f}/SF",
-                    key="highest_rent_metric"
-                )
-            with col2:
-                ui.metric_card(
-                    title="Free Rent Periods", 
-                    content=f"{(schedule_df['After Free Rent ($/SF/mo)'] == 0).sum()} months",
-                    key="free_rent_periods_metric"
-                )
-            with col3:
-                avg_effective = schedule_df['Effective ($/SF/mo)'].mean()
-                ui.metric_card(
-                    title="Avg Effective Rent", 
-                    content=f"${avg_effective:,.2f}/SF/mo",
-                    key="avg_effective_rent_metric"
-                )
         
         with tab2:
             # Detailed monthly schedule table
@@ -406,8 +383,10 @@ def main():
         with col2:
             st.markdown("""
                 <div style="text-align: center; color: #6b7280; padding: 3rem 0;">
-                    <h3 style="color: #374151; margin-bottom: 1rem;">Enter lease parameters</h3>
-                    <p style="margin-bottom: 2rem;">Fill the sidebar and click Calculate.</p>
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🏢</div>
+                    <h2 style="color: #374151; margin-bottom: 1rem;">Net Effective Rent Calculator</h2>
+                    <p style="margin-bottom: 1rem;">Enter your lease terms in the sidebar to analyze effective rent rates, view payment schedules, and export results.</p>
+                    <p style="font-size: 0.9rem; color: #9ca3af;">👈 Click the <strong>&gt;</strong><strong>&gt;</strong> arrow to open the sidebar if it's closed</p>
                 </div>
             """, unsafe_allow_html=True)
     
